@@ -6,8 +6,8 @@ Deployar manualmente, con la consola o por la interfaz de AWS, una función lamb
 1. [Antes de empezar](#1-antes-de-empezar)
 2. [Crear el proyecto](#2-crear-el-proyecto)
 3. [Examinando el proyecto](#3-examinando-el-proyecto)
-4. [Testear en local](#4-testear-en-local)
-5. [Compilar el proyecto](#5-compilar-el-proyecto)
+4. [Compilar el proyecto](#4-compilar-el-proyecto)
+5. [Testear en local](#5-testear-en-local)
 6. [Deploy](#6-deploy)<br>
   6.1. [En consola](#61-en-consola)<br>
   6.2 [En la interfaz web de Amazon](#62-en-la-interfaz-web-de-Amazon)<br>
@@ -126,7 +126,23 @@ y que el output será...
 ```
 El request ID es parte de la información de `context`, objeto que se proporciona durante la invocación de la lambda y que recibe `handleRequest`.
 
-## 4. Testear en local
+![](attachments/Clipboard_2020-08-06-20-36-59.png)
+
+## 4. Compilar el proyecto
+Para compilar el proyecto:
+```bash
+cd quarkus-lambda
+mvn clean package
+```
+Si se desea compilarlo en modo nativo (demora más):
+```bash
+# Linux
+mvn package -Pnative
+# Non-linux (con docker)
+mvn clean install -Pnative -Dnative-image.docker-build=true
+```
+
+## 5. Testear en local
 Para invocar la lambda localmente, creamos un archivo `sample-event.json` que contendrá nuestro evento.
 ```json
 // sample-event.json
@@ -146,21 +162,6 @@ También podemos pasar el evento por el stdin.
 echo '{"name":"Andrea", "greeting": "hello"}' | sam local invoke --template-file target/sam.jvm.yaml --event -
 ```
 
-![](attachments/Clipboard_2020-08-06-20-36-59.png)
-
-## 5. Compilar el proyecto
-Para compilar el proyecto:
-```bash
-cd quarkus-lambda
-mvn clean package
-```
-Si se desea compilarlo en modo nativo (demora más):
-```bash
-# Linux
-mvn package -Pnative
-# Non-linux (con docker)
-mvn clean install -Pnative -Dnative-image.docker-build=true
-```
 
 ### ¿SAM? ¿template-file? ¿Qué es eso?
 Revisar [esto](../whats-sam.md).
