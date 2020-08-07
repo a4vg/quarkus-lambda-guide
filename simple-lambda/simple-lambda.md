@@ -120,8 +120,8 @@ y que el output será...
 ```js
 // output
 {
-  "result": event.name + " " + event.greeting,
-  "resultId": context.getAwsRequestId()
+  "result":  "saludo nombre" // event.name + " " + event.greeting,
+  "resultId": "abcd-saes-dsfe-fds434f" // context.getAwsRequestId()
 }
 ```
 El request ID es parte de la información de `context`, objeto que se proporciona durante la invocación de la lambda y que recibe `handleRequest`.
