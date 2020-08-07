@@ -49,7 +49,7 @@ En `application.properties` se indica que `TestLambda`, que ha sido nombrado con
 
 
 <details>
-<summary>Click para expandir<h3>Interfaces `RequestHandler<?, ?>` y `RequestStreamHandler`</h3></summary>
+<summary><strong>Interfaces `RequestHandler<?, ?>` y `RequestStreamHandler. Click para expandir</strong></summary>
 Para que Quarkus reconozca a la clase como una función lambda, la clase debe implementar una de estas dos interfaces, requeridas por AWS. Estas definen la manera en que se serializará y deserializará el input y output de una Lambda.
 
 **Ambas definen el método `handleRequest`, donde se encuentra la lógica de la lambda.** Los parametros que recibe y lo que devuelve depende de la interfaz, pero siempre se le proporciona el objeto `context`, que recibe información sobre el ambiente donde se está ejecutando la lambda.
