@@ -3,21 +3,21 @@
 Deployar manualmente, con la consola o por la interfaz de AWS, una función lambda simple con Quarkus. 
 
 ## Contenido
-1. [Antes de empezar](#Antes-de-empezar)
-2. [Crear el proyecto](#Crear-el-proyecto)
-3. [Examinando el proyecto](#Examinando-el-proyecto)
-4. [Testear en local](#Testear-en-local)
-5. [Compilar el proyecto](#Compilar-el-proyecto)
-6. [Deploy](#Deploy)
-  6.1. [En consola](#En-consola)
-  6.2 [En la interfaz web de Amazon](#En-la-interfaz-web-de-Amazon)
-7. [Testear la lambda deployada](#Testear-la-lambda-deployada)
-8. [Links](#Links)
+1. [Antes de empezar](#1-antes-de-empezar)
+2. [Crear el proyecto](#2-crear-el-proyecto)
+3. [Examinando el proyecto](#3-examinando-el-proyecto)
+4. [Testear en local](#4-testear-en-local)
+5. [Compilar el proyecto](#5-compilar-el-proyecto)
+6. [Deploy](#6-deploy)<br>
+  6.1. [En consola](#61-en-consola)<br>
+  6.2 [En la interfaz web de Amazon](#62-en-la-interfaz-web-de-Amazon)<br>
+7. [Testear la lambda deployada](#7-testear-la-lambda-deployada)
+8. [Links](#8-links)
 
 
 
 ## 1. Antes de empezar
-Recuerda instalar y configurar los [requerimientos](../README.md).
+Recuerda instalar y configurar los [requerimientos](../README.md#requerimientos-previos).
 
 
 ## 2. Crear el proyecto
@@ -29,10 +29,10 @@ mvn archetype:generate \
        -DarchetypeArtifactId=quarkus-amazon-lambda-archetype \
        -DarchetypeVersion=1.6.1.Final
 ```
-![](attachment/Clipboard_2020-08-06-14-10-50.png)
+![a](attachments/Clipboard_2020-08-06-14-10-50.png)
 
 > Nota: También puede hacerse desde https://code.quarkus.io/ seleccionando AWS Lambda.
-![](attachment/Clipboard_2020-08-06-13-47-02.png)
+![](attachments/Clipboard_2020-08-06-13-47-02.png)
 
 ## 3. Examinando el proyecto
 El proyecto contiene tres lambdas: `TestLambda`, `StreamLambda` y `UnusedLambda` que serán empaquetadas al compilarse. En este proyecto las últimas dos no son usadas, pueden borrarse si deseas.
@@ -45,7 +45,7 @@ Algunos datos sobre lambdas en Quarkus:
 
 En `application.properties` se indica que `TestLambda`, que ha sido nombrado con un `@Named("test")`, será el _lambda handler_. 
 
-![](attachment/Clipboard_2020-08-06-16-39-38.png)
+![](attachments/Clipboard_2020-08-06-16-39-38.png)
 
 
 <details>
@@ -109,7 +109,7 @@ public class TestLambda implements RequestHandler<InputObject, OutputObject> {
 }
 ```
 Examinando el método `process` y viendo las propiedades de las clases `InputObject` y `OutputObject`, podemos deducir que el _event_ (input) tendrá un formato parecido a este: (por lo general está en JSON)
-```json
+```js
 // event
 {
   "name": "nombre",
@@ -117,7 +117,7 @@ Examinando el método `process` y viendo las propiedades de las clases `InputObj
 }
 ```
 y que el output será...
-```json
+```js
 // output
 {
   "result": event.name + " " + event.greeting,
@@ -126,7 +126,7 @@ y que el output será...
 ```
 El request ID es parte de la información de `context`, objeto que se proporciona durante la invocación de la lambda y que recibe `handleRequest`.
 
-## 4. Testear  en local
+## 4. Testear en local
 Para invocar la lambda localmente, creamos un archivo `sample-event.json` que contendrá nuestro evento.
 ```json
 // sample-event.json
@@ -146,7 +146,7 @@ También podemos pasar el evento por el stdin.
 echo '{"name":"Andrea", "greeting": "hello"}' | sam local invoke --template-file target/sam.jvm.yaml --event -
 ```
 
-![](attachment/Clipboard_2020-08-06-20-36-59.png)
+![](attachments/Clipboard_2020-08-06-20-36-59.png)
 
 ## 5. Compilar el proyecto
 Para compilar el proyecto:
@@ -167,7 +167,7 @@ Revisar [esto](../whats-sam.md).
 Más adelante usaremos `sam deploy` para deployar nuestro proyecto con SAM y utilizaremos este template, pero por ahora solo deployaremos la lambda sin CloudFormation (en el link de arriba se habla sobre qué es).
 
 ## 6. Deploy
-### 6.1 En consola
+### 6.1. En consola
 Dentro de la carpeta `target` que se creó en el build aparece un script `manage.sh`, este tiene ya preparados los comandos para crear la lambda en AWS.
 
 Antes de usar el script debemos crear un Execution Role para la lambda (`aws` debe haber sido configurado previamente con `aws configure`)
@@ -175,7 +175,7 @@ Antes de usar el script debemos crear un Execution Role para la lambda (`aws` de
 aws iam create-role --role-name lambda-ex --assume-role-policy-document '{"Version": "2012-10-17","Statement": [{ "Effect": "Allow", "Principal": {"Service": "lambda.amazonaws.com"}, "Action": "sts:AssumeRole"}]}'
 ```
 Anotar el `Arn` del rol que aparece.
-![](attachment/Clipboard_2020-08-06-17-20-17.png)
+![](attachments/Clipboard_2020-08-06-17-20-17.png)
 
 Y darle permiso para escribir en los logs de CloudWatch, asignandole el policy `AWSLambdaBasicExecutionRole`.
 ```bash
@@ -227,7 +227,7 @@ RUNTIME=java11
 ZIP_FILE=fileb://{carpeta que contiene al proyecto}/quarkus-lambda/target/function.zip
 ```
 
-![](attachment/Clipboard_2020-08-06-17-26-15.png)
+![](attachments/Clipboard_2020-08-06-17-26-15.png)
 
 La función ha sido creada en AWS.
 
@@ -238,30 +238,30 @@ Esta explicación es la misma que [en esta parte del video](https://youtu.be/Y_g
 3. Click en el botón naranja `Create Function`.
 4. Darle un nombre cualquiera y seleccionar `Java11` como el runtime. Para los permisos, seleccionar el crear un rol con permisos básicos.
 
-![](attachment/Clipboard_2020-08-06-17-36-06.png)
+![](attachments/Clipboard_2020-08-06-17-36-06.png)
 
 5. Y crear la función. Nos llevará a la página de la función lambda.
 6. Debajo de la sección Designer, ir a `Function code` y `Actions > Upload zip or jar`. Subir el zip `function.zip` que se encuentra en `target`.
 
-![](attachment/Clipboard_2020-08-06-17-50-20.png)
+![](attachments/Clipboard_2020-08-06-17-50-20.png)
 
 7. Ahora hay que decirle a la lambda cual es el lambda handler. Para esto bajamos a la sección de `Basic Settings` y cambiamos el handler `example.Hello::handleRequest` por `io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest`. Así delegas el trabajo de manejar el handler a Quarkus, que cederá el control a la función lambda que indicamos en `application.properties`. Si el proyecto tuviera solo una función lambda, se la cedería a esa.
 
-![](attachment/Clipboard_2020-08-06-21-03-47.png)
+![](attachments/Clipboard_2020-08-06-21-03-47.png)
 
 ## 7. Testear la lambda deployada
 En la interfaz de Amazon, en `Lambda > Functions` aparece la función que acabamos de deployar.
 
-![](attachment/Clipboard_2020-08-06-17-39-59.png)
-![](attachment/Clipboard_2020-08-06-17-40-47.png)
+![](attachments/Clipboard_2020-08-06-17-39-59.png)
+![](attachments/Clipboard_2020-08-06-17-40-47.png)
 
 Para testear que funcione correctamente, ir a `Test` en la derecha y crear un nuevo evento. En el cuerpo escribimos un JSON con los keys `name` y `greeting`, los valores y el nombre del evento pueden ser cualquiera.
 
-![](attachment/Clipboard_2020-08-06-17-27-53.png)
+![](attachments/Clipboard_2020-08-06-17-27-53.png)
 
 Creamos el evento y volvemos a hacer click en `Test`. Nos aparece el resultado de nuestra lambda, como cuando la testeamos en local.
 
-![](attachment/Clipboard_2020-08-06-17-28-49.png)
+![](attachments/Clipboard_2020-08-06-17-28-49.png)
 
 
 ### 8. Links
