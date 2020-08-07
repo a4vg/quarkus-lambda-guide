@@ -126,7 +126,7 @@ y que el output será...
 ```
 El request ID es parte de la información de `context`, objeto que se proporciona durante la invocación de la lambda y que recibe `handleRequest`.
 
-![](attachments/Clipboard_2020-08-06-20-36-59.png)
+Cuando [testeemos la función](#5-testear-en-local) veremos un output similar a este.
 
 ## 4. Compilar el proyecto
 Para compilar el proyecto:
@@ -162,6 +162,7 @@ También podemos pasar el evento por el stdin.
 echo '{"name":"Andrea", "greeting": "hello"}' | sam local invoke --template-file target/sam.jvm.yaml --event -
 ```
 
+![](attachments/Clipboard_2020-08-06-20-36-59.png)
 
 ### ¿SAM? ¿template-file? ¿Qué es eso?
 Revisar [esto](../whats-sam.md).
@@ -195,7 +196,7 @@ Es un wrapper a distintas funciones de `aws lambda`. La función `cmd_create` cr
 
 * `FUNCTION_NAME`: artifactId convertido a PascalCase. Ejm: quarkus-lambda a QuarkusLambda. Se usa esta notación en lambdas por convención.
 * `ZIP_FILE`: path absoluto al zip en` target/function.zip`, que contiene el código empaquetado.
-* `HANDLER`: El lambda handler de Quarkus. Para proyectos creados con `quarkus-amazon-lambda` (como este) es siempre `io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest`. Se explica más en el paso 7 de [deployar con interfaz](#En-la-interfaz-web-de-Amazon)
+* `HANDLER`: El lambda handler de Quarkus. Para proyectos creados con `quarkus-amazon-lambda` (como este) es siempre `io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest`. Se explica más en el paso de [deployar con interfaz](#62-en-la-interfaz-web-de-Amazon)
 * `RUNTIME`: El runtime, java11 o java8
 * `LAMBDA_ROLE_ARN`: El ARN (id) del rol que se le asignará a la lambda. La variable se puede agregar directamente en el script, modificando el archivo, o utilizando una variable de ambiente (como lo acabamos de hacer).
 
