@@ -2,6 +2,7 @@
 
 ## Index
 1. [Deployar Lambda con Quarkus (sin API)](simple-lambda/simple-lambda.md)
+2. [Deployar Lambda con Quarkus (con API y SAM)](api-sam-lambda/api-sam-lambda.md)
 
 ## Requerimientos previos
 ### Para [Quarkus](https://quarkus.io/get-started/)
