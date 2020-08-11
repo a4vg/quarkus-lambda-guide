@@ -19,7 +19,7 @@ Deployar manualmente con SAM CLI una función lambda con Quarkus desencadenada p
 ## 1. Antes de empezar
 * Recuerda instalar y configurar los [requerimientos](../README.md#requerimientos-previos).
 * Es recomendable (pero no obligatorio) realizar la [guía para deployar una función lambda sin SAM](../simple-lambda/simple-lambda.md). Solo es necesario entenderla, pues el proceso es muy similar.
-* Esta guía asume que haz leído [qué es SAM](../cloudformation.md#sam).
+* Esta guía asume que haz leído [qué es SAM](../cloudformation.md#sam-cli).
 
 ## 2. Crear el proyecto
 Generar proyecto de Quarkus con el siguiente comando. Usaremos la extensión `quarkus-amazon-lambda-http` (tiene un `-http` a diferencia de la usada en la [guía sin sam](../simple-lambda/simple-lambda.md)).
@@ -181,7 +181,7 @@ Sin la dependencia:
 Con la dependencia:
 ![](attachments/Clipboard_2020-08-08-02-24-48.png)
 
-Los archivos más importantes son los YAML y `function.zip`. Como vimos en la [guía de lambda sin SAM](../simple-lambda/simple-lambda.md), `function.zip` empaqueta el código de nuestra aplicación, lista para ser deployada. `sam.jvm.yalm` (y `sam.native.yml` para el modo nativo) es el template que usará SAM CLI para construir nuestra aplicación con CloudFormation (para qué es esto, click [aquí](../cloudformation.md#sam)).
+Los archivos más importantes son los YAML y `function.zip`. Como vimos en la [guía de lambda sin SAM](../simple-lambda/simple-lambda.md), `function.zip` empaqueta el código de nuestra aplicación, lista para ser deployada. `sam.jvm.yalm` (y `sam.native.yml` para el modo nativo) es el template que usará SAM CLI para construir nuestra aplicación con CloudFormation (para qué es esto, click [aquí](../cloudformation.md#sam-cli)).
 
 ### Examinando `sam.jvm.yalm`
 `sam.jvm.yalm` está compuesto por cuatro partes principales:
@@ -245,7 +245,7 @@ QuarkusLambdaSam:
 ```
 
 #### Outputs
-Los outputs son opcionales y en este proyecto no son indispensables, pero pueden servirnos para poder visualizar ciertos valores en la interfaz de CloudFormation como la url de nuestro API. La verdadera utilidad de los Outputs se encuentra cuando queremos exportar ciertos valores de nuestro stack (término de CloudFormation. Leer [esto](../cloudformation.md#sam)) e importarlos en otro. Así podemos referenciar recursos a través de stacks.
+Los outputs son opcionales y en este proyecto no son indispensables, pero pueden servirnos para poder visualizar ciertos valores en la interfaz de CloudFormation como la url de nuestro API. La verdadera utilidad de los Outputs se encuentra cuando queremos exportar ciertos valores de nuestro stack (término de CloudFormation. Leer [esto](../cloudformation.md#sam-cli)) e importarlos en otro. Así podemos referenciar recursos a través de stacks.
 
 ```yaml
   Outputs:
