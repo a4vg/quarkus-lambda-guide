@@ -10,9 +10,9 @@ Implementar un pipeline mediante AWS CodePipeline para deployments automáticos 
 4. [Examinando el proyecto](#4-examinando-el-proyecto)
 5. [Crear un S3 bucket para los artifacts](#5-crear-un-S3-bucket-para-los-artifacts)
 6. [Crear el pipeline](#6-crear-el-pipeline)
-7. [Crear los stage del pipeline](#7-crear-los-stage-del-pipeline)
-  7.1. [Source stage](#71-source-stage)
-  7.2. [Build stage](#72-build-stage)
+7. [Crear los stage del pipeline](#7-crear-los-stage-del-pipeline)<br>
+  7.1. [Source stage](#71-source-stage)<br>
+  7.2. [Build stage](#72-build-stage)<br>
   7.3. [Deploy stage](#73-deploy-stage)
 8. [Deployar el pipeline](#8-deployar-el-pipeline)
 9. [Testear el pipeline](#9-testear-el-pipeline)
@@ -21,7 +21,7 @@ Implementar un pipeline mediante AWS CodePipeline para deployments automáticos 
 ## 1. Antes de empezar
 * Recuerda instalar y configurar los [requerimientos](../README.md#requerimientos-previos).
 * Utilizaremos el proyecto que creamos en la [guía de lambda con API y SAM](../api-sam-lambda/api-sam-lambda.md), por lo que la debes haber seguido o al menos, tener el resultado final.
-* Esta guía asume que haz leído [qué es Amazon CDK](../cloudformation.md#amazon-cdk).
+* Esta guía asume que haz leído [qué es AWS CDK](../cloudformation.md#aws-cdk).
 
 ## 2. Crear el repositorio
 Vamos al proyecto que construímos en la [guía pasada](../api-sam-lambda/api-sam-lambda.md) e inicializamos el repositorio.
@@ -62,7 +62,7 @@ mkdir pipeline
 cd pipeline
 ```
 
-Creamos un nuevo proyecto con [Amazon CDK](../cloudformation.md#amazon-cdk). Hay distintos lenguajes disponibles, pero usaremos `typescript`.
+Creamos un nuevo proyecto con [AWS CDK](../cloudformation.md#aws-cdk). Hay distintos lenguajes disponibles, pero usaremos `typescript`.
 Para ver los otros lenguajes, puedes usar `cdk init app`
 
 ![](attachments/Clipboard_2020-08-10-17-27-00.png)

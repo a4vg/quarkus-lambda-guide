@@ -327,6 +327,7 @@ sam deploy --template-file out.yaml --capabilities CAPABILITY_IAM --stack-name q
 
 ![](attachments/Clipboard_2020-08-09-23-01-55.png)
 
+#### Changeset
 Una de las palabras que encontraremos en el output es **changeset**. En CloudFormation, un changeset es, como lo dice su nombre, un conjunto de cambios que se aplicarán al stack durante el deployment. El stack luego es creado o actualizado en base a los cambios.
 
 ### Método simplificado
