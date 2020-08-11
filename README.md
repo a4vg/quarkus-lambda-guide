@@ -18,9 +18,8 @@ O... si deseas realizar los proyectos en local:
 * [SAM CLI v0.31.0+](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html): Testear las funciones lambda localmente, compilar y deployar aplicaciones SAM. Para más información sobre SAM, [click aquí](whats-sam.md)
 * [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html): Manejar los recursos de tu cuenta de AWS. Crear roles, deployar, editar, recuperar, etc.
 
+Recuerda configurar AWS CLI con las credenciales de tu cuenta de AWS. Utiliza `aws configure`. Más info [aquí](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
+
 ### Para la app del pipeline con [AWS CDK](https://docs.aws.amazon.com/it_it/cdk/latest/guide/home.html)
 AWS CDK permite crear aplicaciones con varios lenguajes, pero esta vez se usará...
 * [Typescript](https://www.typescriptlang.org/#installation): Lenguaje que extiende Javascript, por lo que comparte mucha similitud y requiere [`npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
-
-
-Recuerda configurar AWS CLI con las credenciales de tu cuenta de AWS. Utiliza `aws configure`. Más info [aquí](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
