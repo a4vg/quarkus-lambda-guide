@@ -165,7 +165,7 @@ echo '{"name":"Andrea", "greeting": "hello"}' | sam local invoke --template-file
 ![](attachments/Clipboard_2020-08-06-20-36-59.png)
 
 ### ¿SAM? ¿template-file? ¿Qué es eso?
-Revisar [esto](../whats-sam.md).
+Revisar [esto](../cloudformation.md#sam).
 Más adelante usaremos `sam deploy` para deployar nuestro proyecto con SAM y utilizaremos este template, pero por ahora solo deployaremos la lambda sin CloudFormation (en el link de arriba se habla sobre qué es).
 
 ## 6. Deploy
