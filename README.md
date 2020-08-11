@@ -3,6 +3,7 @@
 ## Index
 1. [Deployar Lambda con Quarkus (sin API)](simple-lambda/simple-lambda.md)
 2. [Deployar Lambda con Quarkus (con API y SAM)](api-sam-lambda/api-sam-lambda.md)
+3. [Implementar el pipeline](pipeline/pipeline.md)
 
 ## Requerimientos previos
 ### Para [Quarkus](https://quarkus.io/get-started/)
