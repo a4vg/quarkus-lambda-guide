@@ -26,6 +26,7 @@ Generar proyecto de Quarkus con el siguiente comando. Usaremos la extensión `qu
 
 Pedirá un group id y artifact id, este último será el nombre de la carpeta creada.
 
+Para Windows, reemplazar los `\` con `^`.
 ```bash
 mvn archetype:generate \
        -DarchetypeGroupId=io.quarkus \

@@ -23,13 +23,15 @@ Recuerda instalar y configurar los [requerimientos](../README.md#requerimientos-
 ## 2. Crear el proyecto
 Generar proyecto de Quarkus con el siguiente comando. Nótese que usa la extensión `quarkus-amazon-lambda`.
 Pedirá un group id y artifact id, este último será el nombre de la carpeta creada.
+
+Para Windows, reemplazar los `\` con `^`.
 ```bash
 mvn archetype:generate \
        -DarchetypeGroupId=io.quarkus \
        -DarchetypeArtifactId=quarkus-amazon-lambda-archetype \
        -DarchetypeVersion=1.6.1.Final
 ```
-![a](attachments/Clipboard_2020-08-06-14-10-50.png)
+![](attachments/Clipboard_2020-08-06-14-10-50.png)
 
 > Nota: También puede hacerse desde https://code.quarkus.io/ seleccionando AWS Lambda.
 ![](attachments/Clipboard_2020-08-06-13-47-02.png)
