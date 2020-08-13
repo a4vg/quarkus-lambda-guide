@@ -21,5 +21,7 @@ O... si deseas realizar los proyectos en local:
 Recuerda configurar AWS CLI con las credenciales de tu cuenta de AWS. Utiliza `aws configure`. Más info [aquí](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
 
 ### Para la app del pipeline con [AWS CDK](https://docs.aws.amazon.com/it_it/cdk/latest/guide/home.html)
+* [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm): Package manager de [Nodejs](https://nodejs.org/es/), necesario para instalar AWS CDK y Typescript.
+* [AWS CDK](https://www.npmjs.com/package/aws-cdk): Instalar con `npm install -g aws-cdk`.
 AWS CDK permite crear aplicaciones con varios lenguajes, pero esta vez se usará...
-* [Typescript](https://www.typescriptlang.org/#installation): Lenguaje que extiende Javascript, por lo que comparte mucha similitud y requiere [`npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+* [Typescript](https://www.typescriptlang.org/#installation): Lenguaje que extiende Javascript, por lo que comparte mucha similitud.
